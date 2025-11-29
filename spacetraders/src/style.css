@@ -1,0 +1,126 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --accent: rgb(100, 22, 173);
+  --sharpAccent: rgb(115, 8, 214);
+  --shade1: #313131;
+  --shade2: #414141;
+  --shade3: #504f4f;
+  --shade4: #5c5c5c;
+  --primary: rgb(46, 13, 77);
+  --secondary: rgb(21, 0, 39);
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+  border-color: var(--accent);
+  padding: 0.3em 0.5em;
+  margin: 0.1em 0.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--sharpAccent);
+  background-color: var(--primary);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.buttonActive {
+  background-color: var(--primary);
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  background-color: var(--shade1);
+  border-radius: 1.5rem;
+  margin: 1rem;
+  padding: 0.4rem;
+
+  & .container {
+    background-color: var(--shade2);
+    
+    & .container {
+      background-color: var(--shade3);
+
+      & .container {
+        background-color: var(--shade4);
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent: rgb(166, 74, 253);
+    --sharpAccent: rgb(140, 16, 255);
+    --shade1: #f3f3f3;
+    --shade2: #e9e8e8;
+    --shade3: #c5c5c5;
+    --shade4: #a8a8a8;
+    --primary: rgb(231, 205, 255);
+    --secondary: rgb(245, 236, 253);
+    
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: var(--secondary);
+  }
+  .buttonActive {
+    background-color: var(--primary);
+  }
+}
