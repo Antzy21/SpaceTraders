@@ -47,8 +47,6 @@ fulfillContracts(store.myContracts);
 <template>
   <tr>
     <td>{{ contract.type }}</td>
-    <td>{{ contract.accepted }}</td>
-    <td>{{ contract.fulfilled }}</td>
     <td>
       <span v-if="contract.fulfilled">-</span>
       <span v-else>{{ hoursTillDeadline }}</span>
@@ -66,8 +64,11 @@ fulfillContracts(store.myContracts);
         {{ delivery.unitsRequired - delivery.unitsFulfilled }} {{ delivery.tradeSymbol }} {{ delivery.destinationSymbol }}
       </div>
     </td>
-    <td v-if="!contract.accepted">
-      <button @click="onAcceptContract(contract.id)">Y</button>
+    <td>
+      <span v-if="contract.fulfilled">Fulfilled</span>
+      <span v-else-if="hoursTillDeadline <= 0">Expired</span>
+      <span v-else-if="contract.accepted">Active</span>
+      <button v-else-if="!contract.accepted" @click="onAcceptContract(contract.id)">Accept</button>
     </td>
   </tr>
 </template>

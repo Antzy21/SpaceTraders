@@ -44,15 +44,18 @@ loadMarket()
 
 <template>
   <div class="container">
-    <span>Type: <b>{{ waypoint.type }}</b></span>
-    <span>Coords: <b>{{ waypoint.x }}, {{ waypoint.y }}</b></span>
-    <span>Waypoint:
-      <LocationButton :symbol="waypoint.symbol"></LocationButton>
-    </span>
-    <span v-if="waypoint.faction">
-      Faction: <b>{{ waypoint.faction.symbol }}</b>
-    </span>
-    <div v-if="waypoint.modifiers?.length > 0"><span v-for="modifier in waypoint.modifiers"><b>{{ modifier }}</b></span>
+    <div>
+      <span>Type: <b>{{ waypoint.type }}</b></span>
+      <span>Coords: <b>{{ waypoint.x }}, {{ waypoint.y }}</b></span>
+      <span>Waypoint:
+        <LocationButton :symbol="waypoint.symbol"></LocationButton>
+      </span>
+      <span v-if="waypoint.faction">
+        Faction: <b>{{ waypoint.faction.symbol }}</b>
+      </span>
+    </div>
+    <div v-if="waypoint.modifiers?.length > 0">
+      <span v-for="modifier in waypoint.modifiers"><b>{{ modifier }}</b></span>
     </div>
     <div v-if="waypoint.traits?.length > 0">
       <span v-for="trait in waypoint.traits"><b>{{ trait.name }}</b></span>
@@ -60,9 +63,8 @@ loadMarket()
     <div v-if="waypoint.isUnderConstruction">Waypoint is under construction</div>
     <ShipyardView v-if="shipyard" :shipyard="shipyard" :waypointSymbol="waypoint.symbol"/>
     <MarketView v-if="market" :market="market"/>
-    {{ waypoint.orbitals }}
     <div v-for="orbital in waypoint.orbitalWaypoints" :key="orbital.symbol">
-      <Waypoint :waypoint="orbital" />
+      <WaypointView :waypoint="orbital" />
     </div>
   </div>
 </template>

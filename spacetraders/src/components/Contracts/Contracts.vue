@@ -8,22 +8,22 @@ store.loadContracts()
 
 <template>
   <h2>Contracts</h2>
-  <table>
-    <tbody>
-      <tr>
-        <th>Type</th>
-        <th>Accepted</th>
-        <th>Fullfilled</th>
-        <th>Due</th>
-        <th>Pay</th>
-        <th>Deliveries</th>
-        <th>Accept</th>
-      </tr>
-    </tbody>
-    <tbody>
-      <ContractRow v-for="contract in store.myContracts" :contract="contract" :key="contract.id" />
-    </tbody>
-  </table>
+  <div class="container">
+    <table>
+      <tbody>
+        <tr>
+          <th>Type</th>
+          <th>Due</th>
+          <th>Pay</th>
+          <th>Deliveries</th>
+          <th>Status</th>
+        </tr>
+      </tbody>
+      <tbody>
+        <ContractRow v-for="contract in store.myContracts" :contract="contract" :key="contract.id" />
+      </tbody>
+    </table>
+  </div>
   <div>
     <button @click="store.loadContracts()">Refresh Contracts</button>
   </div>
